@@ -4,8 +4,6 @@
 // Make the code compile and the tests pass!
 // Execute `rustlings hint structs3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
-
 #[derive(Debug)]
 struct Package {
     sender_country: String,
@@ -26,12 +24,22 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
+    fn is_international(&self) -> bool{
         // Something goes here...
+        if self.sender_country != self.recipient_country { 
+            return true
+        } else {
+            return false
+        }
     }
 
-    fn get_fees(&self, cents_per_gram: i32) -> ??? {
+    fn get_fees(&self, cents_per_gram: i32) -> i32 {
         // Something goes here...
+        if cents_per_gram <= 0 {
+            panic!("Can not ship a costless package.")
+        } else {
+            return self.weight_in_grams * cents_per_gram
+        }
     }
 }
 
